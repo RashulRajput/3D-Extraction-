@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import warnings
 from collections import Counter
@@ -57,6 +58,10 @@ def extract(image_path: Path, mask_path: Path, config_path: Path, result_dir: Pa
     families = Counter(k.split("_")[1] if "_" in k else "unknown" for k in features)
     result_dir.mkdir(parents=True, exist_ok=True)
     (result_dir / "radiomics_features.json").write_text(json.dumps(features, indent=2, allow_nan=False), encoding="utf-8")
+    with (result_dir / "radiomics_features.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["feature", "value"])
+        writer.writerows(features.items())
     (result_dir / "diagnostics.json").write_text(json.dumps(diagnostics, indent=2, default=str), encoding="utf-8")
     report = [
         "3D PyRadiomics extraction report", f"Created UTC: {datetime.now(timezone.utc).isoformat()}",

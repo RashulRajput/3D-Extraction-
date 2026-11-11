@@ -6,7 +6,7 @@ Windows desktop workflow for selecting one spatially verified CT or ultrasound s
 
 The ZIP supplied by the user contains 672 DICOM images. It includes a complete 625-slice CT series (`Abdomen 1.0 I30f 3`) with consistent orientation and regular 0.7 mm slice spacing; this is the selected volume. It also includes a separate 44-slice CT series reconstructed at 10 mm and localizer images. The three previously supplied files were sparse examples from the 625-slice series, not the complete volume. The selected series has been converted to `data/images/volume.nrrd` (512 × 512 × 625 voxels; spacing 0.73828125 × 0.73828125 × 0.7 mm). This input is CT, not ultrasound.
 
-The supplied mask ZIP contains three NIfTI masks. Geometry matching selected `INF_0002_mask.nii.gz` for this volume; its label 1 mask was imported to `data/masks/ROI_label.nrrd`. Geometry QC passes. CPU PyRadiomics extraction completed with 107 features (shape, first-order, and texture classes) in `results/radiomics_features.json`.
+The supplied mask ZIP contains three NIfTI masks. Geometry matching selected `INF_0002_mask.nii.gz` for this volume; its label 1 mask was imported to `data/masks/ROI_label.nrrd`. Geometry QC passes. CPU PyRadiomics extraction completed with 107 features (shape, first-order, and texture classes) in `results/radiomics_features.json` and `results/radiomics_features.csv`.
 
 The Drive links could not be read from this environment because the Google Drive connector is disabled. This project only scans the selected DICOMDIR's parent folder when its references are missing.
 
@@ -41,6 +41,7 @@ python scripts\\mask_annotator.py --image data\\images\\volume.nrrd --mask data\
 python scripts\\verify_geometry.py --image data\\images\\volume.nrrd --mask data\\masks\\ROI_label.nrrd
 python scripts\\extract_radiomics.py
 Get-Content results\\radiomics_features.json
+Get-Content results\\radiomics_features.csv
 explorer results
 ```
 
