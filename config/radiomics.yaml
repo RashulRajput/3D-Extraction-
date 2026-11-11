@@ -1,0 +1,16 @@
+image_types:
+  Original: {}
+settings:
+  binWidth: 25
+  normalize: false
+  resampledPixelSpacing: null
+  force2D: false
+  label: 1
+feature_classes:
+  firstorder: []
+  shape: []
+  glcm: []
+  glrlm: []
+  glszm: []
+  gldm: []
+  ngtdm: []

@@ -1,0 +1,14 @@
+.venv/
+.tmp/
+__pycache__/
+*.py[cod]
+data/images/*
+data/masks/*
+data/inspection/*
+results/*
+!data/images/.gitkeep
+!data/masks/.gitkeep
+!data/inspection/.gitkeep
+!results/.gitkeep
+training_data/images/*
+training_data/labels/*
